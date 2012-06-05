@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="megazoll_domained_routing.router.class">Megazoll\DomainedRoutingBundle\Routing\Router</parameter>
+        <parameter key="megazoll_domained_routing.base_domain"></parameter>
+        <parameter key="megazoll_domained_routing.default_domain_pattern"></parameter>
+    </parameters>
+
+    <services>
+        <service id="megazoll_domained_routing.router" class="%megazoll_domained_routing.router.class%">
+            <argument type="service" id="service_container" />
+            <argument>%router.resource%</argument>
+            <argument type="collection" />
+            <argument>null</argument>
+            <argument type= "collection">
+                <argument key="base_domain">%megazoll_domained_routing.base_domain%</argument>
+                <argument key="default_domain_pattern">%megazoll_domained_routing.default_domain_pattern%</argument>
+            </argument>
+        </service>
+    </services>
+</container>
